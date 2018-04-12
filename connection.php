@@ -13,7 +13,7 @@
     die("Connection failed: " . mysqli_connect_error());
   }
 
-  //Alert 
-  echo "Connected successfully!";
+  //Alert
+  // echo "Connected successfully!";
 
  ?>
