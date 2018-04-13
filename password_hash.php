@@ -29,6 +29,7 @@
 
                 $password = 'mypassword';
                 // $password = password_hash( 'mypassword', PASSWORD_DEFAULT );
+                // echo $password;
 
                 $hashedPassword = '$2y$10$IwicEKW1Qg808g5pNzfwGeEUEA62mb5ffK/Ex0Lxb5UtI2xKvgCR2';
 
