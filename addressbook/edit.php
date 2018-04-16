@@ -26,6 +26,26 @@ if(mysqli_num_rows($result) > 0) {
     $alertMessage = "<div class='alert alert-warning'>Nothing to see here. <a href='clients.php'>Head back</a>.</div>";
   }
 
+  if( isset($_POST['update']) ) {
+
+      $clientName     = validateFormData( $_POST["clientName"] );
+      $clientEmail    = validateFormData( $_POST["clientEmail"] );
+      $clientPhone    = validateFormData( $_POST["clientPhone"] );
+      $clientAddress  = validateFormData( $_POST["clientAddress"] );
+      $clientCompany  = validateFormData( $_POST["clientCompany"] );
+      $clientNotes    = validateFormData( $_POST["clientNotes"] );
+
+      $query = "UPDATE clients SET name='$clientName', email='$clientEmail', phone='$clientPhone', address='$clientAddress', company='$clientCompany', notes='$clientNotes' WHERE id='$clientID'";
+
+      $result = mysqli_query($conn, $query);
+
+      if($result) {
+          header("Location: clients.php?alert=updatesuccess");
+      } else {
+          echo "Error updating record: " . mysqli_error($conn);
+      }
+  } //  if( isset($_POST['update']) ) 
+
 
 include('includes/header.php');
 ?>

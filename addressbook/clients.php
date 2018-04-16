@@ -14,7 +14,11 @@ $result = mysqli_query($conn, $query);
 if(isset($_GET['alert'])) {
   //New clients added
   if($_GET['alert']=='success') {
+    //get clients
     $alertMessage = "<div class='alert alert-success'>New client added! <a class='close' data-dismiss='alert'>&times;</a></div>";
+  } else if( $_GET['alert'] == 'updatesuccess' ) {
+    //client updated
+    $alertMessage = "<div class='alert alert-success'>Client updated! <a class='close' data-dismiss='alert'>&times;</a></div>";
   }
 }
 
