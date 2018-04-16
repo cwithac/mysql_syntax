@@ -1,0 +1,28 @@
+<?php
+include('includes/header.php');
+
+// $password = password_hash("abc123", PASSWORD_DEFAULT);
+// echo $password;
+
+?>
+
+<h1>Client Address Book</h1>
+<p class="lead">Log in to your account.</p>
+
+<?php echo $loginError; ?>
+
+<form class="form-inline" action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>" method="post">
+    <div class="form-group">
+        <label for="login-email" class="sr-only">Email</label>
+        <input type="text" class="form-control" id="login-email" placeholder="email" name="email" value="<?php echo $formEmail; ?>">
+    </div>
+    <div class="form-group">
+        <label for="login-password" class="sr-only">Password</label>
+        <input type="password" class="form-control" id="login-password" placeholder="password" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary" name="login">Login</button>
+</form>
+
+<?php
+include('includes/footer.php');
+?>

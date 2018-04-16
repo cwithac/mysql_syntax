@@ -3,7 +3,7 @@
 <html>
 
     <head>
-        
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,8 +20,8 @@
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    
-    <body style="padding-top: 60px;">            
+
+    <body style="padding-top: 60px;">
     <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
 
         <div class="container-fluid">
@@ -44,7 +44,7 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <p class="navbar-text">Aloha, Brad!</p>
+                    <p class="navbar-text">Aloha, Name!</p>
 
                     <li><a href="logout.php">Log out</a></li>
                 </ul>
@@ -54,5 +54,5 @@
         </div>
 
     </nav>
-        
+
     <div class="container">
