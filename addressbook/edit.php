@@ -44,13 +44,27 @@ if(mysqli_num_rows($result) > 0) {
       } else {
           echo "Error updating record: " . mysqli_error($conn);
       }
-  } //  if( isset($_POST['update']) ) 
+  } //  if( isset($_POST['update']) )
+
+if( isset($_POST['delete']) ) {
+
+    $alertMessage = "<div class='alert alert-danger'>
+                        <p>Are you sure you want to delete this client? No take backs!</p><br>
+                        <form action='". htmlspecialchars( $_SERVER["PHP_SELF"] ) ."?id=$clientID' method='post'>
+                            <input type='submit' class='btn btn-danger btn-sm' name='confirm-delete' value='Yes, delete!'>
+                            <a type='button' class='btn btn-default btn-sm' data-dismiss='alert'>Oops, no thanks!</a>
+                        </form>
+                    </div>";
+
+} //if( isset($_POST['delete']) )
 
 
 include('includes/header.php');
 ?>
 
 <h1>Edit Client</h1>
+
+<?php echo $alertMessage ?>
 
 <form action="<?php echo htmlspecialchars( $_SERVER['PHP_SELF'] ); ?>?id=<?php echo $clientID; ?>" method="post" class="row">
     <div class="form-group col-sm-6">
