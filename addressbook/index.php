@@ -1,4 +1,36 @@
 <?php
+session_start();
+include('includes/functions.php');
+
+if(isset($_POST['login'])) {
+  $formEmail = validateFormData($_POST['email']);
+  $formPass = validateFormData($_POST['password']);
+
+  include('includes/connection.php');
+
+  $query = "SELECT name, password FROM users WHERE email='$formEmail'";
+  $result = mysqli_query($conn, $query);
+
+  if(mysqli_num_rows($result) > 0) {
+    while($row = mysqli_fetch_assoc($result)) {
+      $name = $row['name'];
+      $hashedPass = $row['password'];
+    }
+    //verify hashed password vs submitted
+    if(password_verify($formPass, $hashedPass)) {
+      $_SESSION['loggedInUser'] = $name;
+      header('Location: clients.php');
+    } else {
+      $loginError = "<div class='alert alert-danger'>Wrong username/password combination, try again.</div>";
+    }
+  } else {
+    //No results in the DB
+    $loginError = "<div class='alert alert-danger'>No such user in the database, please try again.<a class='close' data-dismiss='alert'>&times;</a></div>";
+  } //end if(mysqli_num_rows($result) > 0) {
+} //end if(isset($_POST['login']))
+
+mysqli_close($conn);
+
 include('includes/header.php');
 
 // $password = password_hash("abc123", PASSWORD_DEFAULT);
