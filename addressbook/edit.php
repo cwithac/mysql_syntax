@@ -58,6 +58,18 @@ if( isset($_POST['delete']) ) {
 
 } //if( isset($_POST['delete']) )
 
+if( isset($_POST['confirm-delete']) ) {
+    $query = "DELETE FROM clients WHERE id='$clientID'";
+    $result = mysqli_query( $conn, $query );
+
+    if($result) {
+        header("Location: clients.php?alert=deleted");
+    } else {
+        echo "Error updating record: " . mysqli_error($conn);
+    }
+} //if( isset($_POST['confirm-delete']) )
+
+mysqli_close($conn);
 
 include('includes/header.php');
 ?>

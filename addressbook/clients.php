@@ -19,6 +19,8 @@ if(isset($_GET['alert'])) {
   } else if( $_GET['alert'] == 'updatesuccess' ) {
     //client updated
     $alertMessage = "<div class='alert alert-success'>Client updated! <a class='close' data-dismiss='alert'>&times;</a></div>";
+  } else if( $_GET['alert'] == 'deleted' ) {
+      $alertMessage = "<div class='alert alert-success'>Client deleted! <a class='close' data-dismiss='alert'>&times;</a></div>";
   }
 }
 
