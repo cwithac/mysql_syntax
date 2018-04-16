@@ -9,12 +9,23 @@ if(!$_SESSION['loggedInUser']) {
 include('includes/connection.php');
 $query = "SELECT * FROM clients";
 $result = mysqli_query($conn, $query);
+
+//Check query string
+if(isset($_GET['alert'])) {
+  //New clients added
+  if($_GET['alert']=='success') {
+    $alertMessage = "<div class='alert alert-success'>New client added! <a class='close' data-dismiss='alert'>&times;</a></div>";
+  }
+}
+
 mysqli_close($conn);
 
 include('includes/header.php');
 ?>
 
 <h1>Client Address Book</h1>
+
+<?php echo $alertMessage ?>
 
 <table class="table table-striped table-bordered">
     <tr>
