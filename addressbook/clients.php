@@ -1,4 +1,16 @@
 <?php
+session_start();
+
+//Verify user is logged in
+if(!$_SESSION['loggedInUser']) {
+  header("Location: index.php");
+}
+
+include('includes/connection.php');
+$query = "SELECT * FROM clients";
+$result = mysqli_query($conn, $query);
+mysqli_close($conn);
+
 include('includes/header.php');
 ?>
 
@@ -14,7 +26,23 @@ include('includes/header.php');
         <th>Notes</th>
         <th>Edit</th>
     </tr>
-    <tr>
+    <?php
+
+    if (mysqli_num_rows($result) > 0) {
+      while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>";
+        echo "<td>" . $row['name'] . "</td><td>" . $row['email'] . "</td><td>" . $row['phone'] . "</td><td>" . $row['address'] . "</td><td>" . $row['company'] . "</td><td>" . $row['notes'] . "</td>";
+        echo '<td><a href="edit.php?id=' . $row['id'] . '" type="button" class="btn btn-primary btn-sm"><span class=glyphicon glyphicon-edit</a></td>';
+        echo "</tr>";
+      }
+    } else {
+      echo "<div class='alert alert-warning'>No clients found.</div>";
+    }
+
+    mysqli_close($conn);
+
+     ?>
+    <!-- <tr>
         <td>John Doe</td>
         <td>john@doe.com</td>
         <td>(123) 456-7890</td>
@@ -31,7 +59,7 @@ include('includes/header.php');
         <td>Brightside Studios Inc.</td>
         <td>Nice lady. Pays in high fives though...</td>
         <td><a href="edit.php" type="button" class="btn btn-default btn-primary btn-sm"><span class="glyphicon glyphicon-edit"></span></a></td>
-    </tr>
+    </tr> -->
 
     <tr>
         <td colspan="7"><div class="text-center"><a href="add.php" type="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-plus"></span> Add Client</a></div></td>
