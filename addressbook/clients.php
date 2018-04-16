@@ -32,7 +32,7 @@ include('includes/header.php');
       while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr>";
         echo "<td>" . $row['name'] . "</td><td>" . $row['email'] . "</td><td>" . $row['phone'] . "</td><td>" . $row['address'] . "</td><td>" . $row['company'] . "</td><td>" . $row['notes'] . "</td>";
-        echo '<td><a href="edit.php?id=' . $row['id'] . '" type="button" class="btn btn-primary btn-sm"><span class=glyphicon glyphicon-edit</a></td>';
+        echo '<td><a href="edit.php?id=' . $row['id'] . '" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit"</a></td>';
         echo "</tr>";
       }
     } else {
